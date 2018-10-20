@@ -1,6 +1,7 @@
 MEC 2018
 
-<!--
-<text-field enteredText=""></text-field>
+<!--<text-field enteredText=""></text-field>
 -->
-<keyboard></keyboard>
+
+<input #message>
+<button (click)="send(message.value)">Send</button>
