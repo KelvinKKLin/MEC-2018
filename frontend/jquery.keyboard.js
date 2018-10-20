@@ -2731,14 +2731,14 @@ http://www.opensource.org/licenses/mit-license.php
 				'{tab} a b c d e f g h i j [ ] \\',
 				'k l m n o p q r s ; \' {enter}',
 				'{shift} t u v w x y z , . / {shift}',
-				'{accept} {space} {cancel}'
+				'{space} {cancel}'
 			],
 			'shift': [
 				'~ ! @ # $ % ^ & * ( ) _ + {bksp}',
 				'{tab} A B C D E F G H I J { } |',
 				'K L M N O P Q R S : " {enter}',
 				'{shift} T U V W X Y Z < > ? {shift}',
-				'{accept} {space} {cancel}'
+				'{space} {cancel}'
 			]
 		},
 		'qwerty': {
@@ -2747,14 +2747,14 @@ http://www.opensource.org/licenses/mit-license.php
 				'{tab} q w e r t y u i o p [ ] \\',
 				'a s d f g h j k l ; \' {enter}',
 				'{shift} z x c v b n m , . / {shift}',
-				'{accept} {space} {cancel}'
+				'{space} {cancel}'
 			],
 			'shift': [
 				'~ ! @ # $ % ^ & * ( ) _ + {bksp}',
 				'{tab} Q W E R T Y U I O P { } |',
 				'A S D F G H J K L : " {enter}',
 				'{shift} Z X C V B N M < > ? {shift}',
-				'{accept} {space} {cancel}'
+				'{space} {cancel}'
 			]
 		},
 		'international': {

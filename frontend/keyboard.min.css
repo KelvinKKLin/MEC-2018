@@ -23,8 +23,8 @@
   
   .ui-keyboard-button {
     height: 6em;
-    min-width: 6em;
-    margin: 1em;
+    min-width: 9em;
+    margin: 0.3em;
     cursor: pointer;
     overflow: hidden;
     line-height: 2em;
@@ -43,7 +43,7 @@
   }
   
   .ui-keyboard-space {
-    width: 15em
+    width: 45em
   }
   
   .ui-keyboard-empty span,

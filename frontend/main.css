@@ -22,3 +22,18 @@ textarea {
     height: 100px;
     font-size: 2em;
 }
+.send-options {
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+}
+.send-option {
+    flex: 1 1 40%;
+    margin: 10px;
+    height: 100px;
+    font-size: 2em;
+    background-color: green; 
+    position: relative;
+}
