@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MEC 2018</title>
+</head>
+<body>
+	<input type="text" id="body">
+	<input type="text" id="to">
+	<button type="button" id="speech_button">Text to Speech!</button>
+	<button type="button">Send Text Message</button>
+
+    <script>
+	$(function() {
+		$("#speech_button").bind('click', function() {
+			$.post("http://127.0.0.1:5000/convert_text_to_speech",
+			{
+			 "text_to_convert":$("#body").val()
+			},
+			function(data, status){
+				console.log("Data: " + data + "\nStatus: " + status);
+				var x = new Audio();
+				x.src = data;
+				x.play();
+			});
+		});
+	});
+			
+	$(function() {
+	  $('#send_button').bind('click', function() {			
+		$.post("http://127.0.0.1:5000/send_text",
+			{
+				text: $("#body").val(),
+				to: $("#to").val()
+			},
+			function(data, status){
+				alert("Data: " + data + "\nStatus: " + status);
+			});
+	  });
+	</script>
+</body>
+</html>
