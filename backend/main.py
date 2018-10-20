@@ -11,6 +11,7 @@ app = Flask(__name__)
 class InvalidUsage(Exception):
     status_code = 400
 
+	# Initialize the InvalidUsage exception.
     def __init__(self, message, status_code=None, payload=None):
         Exception.__init__(self)
         self.message = message
@@ -18,6 +19,7 @@ class InvalidUsage(Exception):
             self.status_code = status_code
         self.payload = payload
 
+	# Convert the exception information into a dictionary.
     def to_dict(self):
         rv = dict(self.payload or ())
         rv['message'] = self.message
@@ -30,13 +32,18 @@ def handle_invalid_usage(error):
     response.status_code = error.status_code
     return response
 
+# Converts English text to speech.
 @app.route('/convert_text_to_speech', methods=['POST'])
 def convert_text_to_speech():
+	# Check to see if the required parameters are present.
     if 'text_to_convert' not in request.values.keys():
         raise InvalidUsage("No text included for conversion", status_code = 400)
+		
+	# Send the post request.
     tts = gTTS(text=request.values['text_to_convert'], lang='en')
     tts.save('converted_text.mp3')
 
+	# Return the sound file.
     return send_file('converted_text.mp3', mimetype='audio/mpeg')
 
 # Get suggestions for words that the user typed in.
