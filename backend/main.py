@@ -30,10 +30,10 @@ def handle_invalid_usage(error):
     response.status_code = error.status_code
     return response
 
-@app.route('/convert_text_to_speech', methods=['POST']):
+@app.route('/convert_text_to_speech', methods=['POST'])
 def convert_text_to_speech():
     if 'text_to_convert' not in request.values.keys():
-		raise InvalidUsage("No text included for conversion", status_code = 400)
+        raise InvalidUsage("No text included for conversion", status_code = 400)
     tts = gTTS(text=request.values['text_to_convert'], lang='en')
     tts.save('converted_text.mp3')
 
