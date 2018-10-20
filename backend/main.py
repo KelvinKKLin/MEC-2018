@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import autocomplete
+from gtts import gTTS
 
 # Set up the model.
 autocomplete.load()
@@ -27,6 +28,15 @@ def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
     return response
+
+@app.route('/convert_text_to_speech', methods=['POST']):
+def convert_text_to_speech():
+    if 'text_to_convert' not in request.values.keys():
+		raise InvalidUsage("No text included for conversion", status_code = 400)
+    tts = gTTS(text=request.values['text_to_convert'], lang='en')
+    tts.save('converted_text.mp3')
+
+    return send_file('converted_text.mp3', mimetype='audio/mpeg')
 
 # Get suggestions for words that the user typed in.
 @app.route('/get_suggestion', methods=['GET','POST'])
