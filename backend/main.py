@@ -70,8 +70,8 @@ def send_text():
 	to_number = request.values['to']
 	
 	# Set up the account credentials - in a production project, this would be placed in a "secrets" file.
-	account_sid = ""
-	auth_token = ""
+	account_sid = "ACbbd2cff98bcbbad08f76b03701a0f2d9"
+	auth_token = "7d786ff14c6b4572a6e8e78f8ad6aee5"
 	
 	# Send the text message.
 	client = Client(account_sid, auth_token)
