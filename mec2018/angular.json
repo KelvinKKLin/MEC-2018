@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/virtual-keyboard/dist/css/keyboard.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/virtual-keyboard/dist/js/jquery.keyboard.min.js"
+            ]
           },
           "configurations": {
             "production": {
