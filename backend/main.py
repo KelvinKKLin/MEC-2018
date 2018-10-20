@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from twilio.rest import Client
 import autocomplete
 
 # Set up the model.
@@ -44,3 +45,30 @@ def get_suggestion():
 		prediction = autocomplete.predict_currword(text, 10)
 		
 	return jsonify(prediction)
+	
+# Adds text message support to allow Don to send text messages.
+@app.route('/send_text', methods=['GET', 'POST'])
+def send_text():
+	# Raise an exception if the required parameters are not specified.
+	if "text" not in request.values.keys():
+		raise InvalidUsage("The text message was not found in the request.", status_code = 400)
+	if "to" not in request.values.keys():
+		raise InvalidUsage("The to-number was not found in the request", status_code = 400)
+	
+	# Extract the required information from the request body.
+	text = request.values['text']
+	to_number = request.values['to']
+	
+	# Set up the account credentials - in a production project, this would be placed in a "secrets" file.
+	account_sid = ""
+	auth_token = ""
+	
+	# Send the text message.
+	client = Client(account_sid, auth_token)
+	message = client.messages.create(
+		from_="",
+		to=to_number,
+		body=text)
+
+	return jsonify({"to":to_number, "message":message.body, "error code":message.error_code})
+	
